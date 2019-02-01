@@ -1,3 +1,4 @@
 name: Business Reviews
 core: 8.x
 type: module
+configure: business_reviews.settings
