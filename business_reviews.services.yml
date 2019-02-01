@@ -1,0 +1,5 @@
+services:
+  business_reviews_client:
+    class: Drupal\business_reviews\BusinessReviewsClient
+    arguments:
+      - '@http_client_factory'

@@ -1,0 +1,7 @@
+test:
+  version: 1.x
+  js:
+    js/index.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

@@ -1,0 +1,14 @@
+<?php 
+function business_reviews_theme($existing, $type, $theme, $path) {
+    $variables = array(
+      'reviews_list' => array(
+        'variables' => array(
+          'items' => NULL,
+          'parent' => NULL,
+          'api_id' => NULL,
+        ),
+        'template' => 'block--reviews-list',
+      ),
+    );
+    return $variables;
+  }
