@@ -11,6 +11,8 @@ class BusinessReviewsClient {
    */
   protected $client;
 
+  protected $apikey;
+
   /**
    * BusinessReviewsClient constructor.
    *
@@ -20,6 +22,8 @@ class BusinessReviewsClient {
     $this->client = $http_client_factory->fromOptions([
       'base_uri' => 'https://cat-fact.herokuapp.com/',
     ]);
+    $this->apikey = \Drupal::service('key.repository')->getKey('test_api_key')->getKeyValue();
+
   }
 
   /**
@@ -41,7 +45,7 @@ class BusinessReviewsClient {
     if ($amount == 1) {
       $data = [$data];
     }
-
+    dump($this->{'apikey'});
     return $data;
   }
 

@@ -34,17 +34,11 @@ class SettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config(static::SETTINGS);
 
-    $form['business_reviews_thing'] = array(
-      '#type' => 'textfield',
-      '#title' => $this->t('Things'),
-      '#default_value' => $config->get('business_reviews_thing'),
-    );  
-
-    $form['other_things'] = array(
-      '#type' => 'textfield',
-      '#title' => $this->t('Other things'),
-      '#default_value' => $config->get('other_things'),
-    );  
+    $form['api_key'] = [
+      '#type' => 'key_select',
+      '#title' => $this->t('API Key'),
+    ];
+    
 
     return parent::buildForm($form, $form_state);
   }
@@ -56,10 +50,7 @@ class SettingsForm extends ConfigFormBase {
       // Retrieve the configuration
        $this->configFactory->getEditable(static::SETTINGS)
       // Set the submitted configuration setting
-      ->set('business_reviews_thing', $form_state->getValue('business_reviews_thing'))
-      // You can set multiple configurations at once by making
-      // multiple calls to set()
-      ->set('other_things', $form_state->getValue('other_things'))
+      ->set('api_key', $form_state->getValue('api_key'))
       ->save();
 
     parent::submitForm($form, $form_state);
