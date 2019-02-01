@@ -1,0 +1,7 @@
+business_reviews.settings:
+  path: '/admin/config/business_reviews/settings'
+  defaults:
+    _form: '\Drupal\business_reviews\Form\SettingsForm'
+    _title: 'business_reviews configuration'
+  requirements:
+    _permission: 'administer site configuration'
