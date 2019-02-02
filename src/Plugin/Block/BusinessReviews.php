@@ -56,19 +56,27 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * {@inheritdoc}
    */
+
   public function build() {
     $node = \Drupal::routeMatch()->getParameter('node');
     $api_id = $node->get('field_api_id')->getValue()[0]["value"];
-    $business_reviews = $this->businessReviewsClient->random($api_id);
-    $items = [];
+    $business_reviews = $this->businessReviewsClient->getProductReviews($api_id);
+    $reviews = [];
 
-    foreach ($business_reviews as $cat_fact) {
-      $items[] = $cat_fact['text'];
+    foreach ($business_reviews as $review) {
+      $shapedReview = new \StdClass();
+      $shapedReview->title = $review['title'];
+      $shapedReview->firstName = $review['user']['fname'];
+      $shapedReview->lastName = $review['user']['lname'];
+      $shapedReview->rating = $review['rating']['overall'];
+      $shapedReview->dateSubmitted = $review['date_submitted'];
+      $shapedReview->content = $review['content'];
+      $reviews[] = $shapedReview;
     }
 
     return [
       '#theme' => 'reviews_list',
-      '#items' => $items,
+      '#reviews' => $reviews,
       '#parent' => $node,
       '#api_id' => $api_id,
       '#attached' => array(
@@ -76,7 +84,7 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
           'business_reviews/test',
         ),
         'drupalSettings' => array(
-          'items' => $items,
+          'reviews' => $reviews,
         )
       ),
     ];
