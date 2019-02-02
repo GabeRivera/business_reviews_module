@@ -3,7 +3,7 @@ function business_reviews_theme($existing, $type, $theme, $path) {
     $variables = array(
       'reviews_list' => array(
         'variables' => array(
-          'items' => NULL,
+          'reviews' => NULL,
           'parent' => NULL,
           'api_id' => NULL,
         ),

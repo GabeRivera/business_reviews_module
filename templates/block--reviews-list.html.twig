@@ -1,12 +1,12 @@
+
 <ul>
-{% for item in items %}
-  <li>{{ item }}</li>
+{% for review in reviews %}
+  <li>review Title: {{ review.title }}</li>
+  <li>review First Name: {{ review.firstName }}</li>
+  <li>review Last Name: {{ review.lastName }}</li>
+  <li>review Date Submitted {{ review.dateSubmitted }}</li>
+  <li>review Content: {{ review.content }}</li>
 {% endfor %}
 </ul>
 
-<ul>
-{% for item in api_id %}
-  <li>{{ item }}</li>
-{% endfor %}
-</ul>
-{{ api_id }}
+{{ api_id }}     

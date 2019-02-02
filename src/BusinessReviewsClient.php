@@ -11,6 +11,9 @@ class BusinessReviewsClient {
    */
   protected $client;
 
+   /**
+   * @var api key for reviews api
+   */
   protected $apikey;
 
   /**
@@ -20,32 +23,36 @@ class BusinessReviewsClient {
    */
   public function __construct($http_client_factory) {
     $this->client = $http_client_factory->fromOptions([
-      'base_uri' => 'https://cat-fact.herokuapp.com/',
+      'base_uri' => 'https://virtserver.swaggerhub.com/nick_renford/bk_reviews/1.0.0/',
     ]);
     $this->apikey = \Drupal::service('key.repository')->getKey('test_api_key')->getKeyValue();
-
   }
 
   /**
-   * Get some random cat facts.
+   * Get some reviews for product
    *
    * @param int $amount
    *
    * @return array
    */
-  public function random($amount = 1) {
-    $response = $this->client->get('facts/random', [
-      'query' => [
-        'amount' => $amount
-      ]
-    ]);
-
+  public function getProductReviews($id) {
+    $response = $this->client->get("reviews/approved/product/{$id}?APIKEY={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
 
-    if ($amount == 1) {
-      $data = [$data];
-    }
-    dump($this->{'apikey'});
+    return $data;
+  }
+
+    /**
+   * Get some reviews for product
+   *
+   * @param int $amount
+   *
+   * @return array
+   */
+  public function getProductInfo($id) {
+    $response = $this->client->get("product/{$id}?APIKEY={$this->{'apikey'}}");
+    $data = Json::decode($response->getBody());
+
     return $data;
   }
 
