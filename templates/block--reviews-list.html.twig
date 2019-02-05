@@ -1,19 +1,2 @@
-<div class="row">
-  {% for review in reviews %}
-  <div class="col-md-6">
-    <div class="card t10-card">
-      <div class="card-item card-title">
-        <h3>{{ review.title }}</h3>
-        <span class="subtitle">
-          by {{ review.firstName }} {{ review.lastName }} | {{ review.dateSubmitted }}
-        </span>
-      </div>
-      <div class="card-item card-text">
-        <p>{{ review.content }}</p>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-
+<div id="reviews-list"></div>
 {{ api_id }}

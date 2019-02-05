@@ -1,8 +1,19 @@
-test:
+vue:
+  remote: https://github.com/vuejs/vue
+  version: 2.6.2
+  license:
+    name: MIT
+    url: https://github.com/vuejs/vue/blob/dev/LICENSE
+    gpl-compatible: true
+  js:
+    //cdnjs.cloudflare.com/ajax/libs/vue/2.6.2/vue.js: {type: external, minified: true}
+    
+reviews_list:
   version: 1.x
   js:
-    js/index.js: {}
+    js/index.js: { scope: footer }
   dependencies:
     - core/jquery
     - core/jquery.once
     - core/drupalSettings
+    - business_reviews/vue
