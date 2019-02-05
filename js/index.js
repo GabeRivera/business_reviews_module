@@ -22,7 +22,7 @@
                 </div>
                 `,
                 data: {
-                  reviews: settings.reviews,
+                  reviews: [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews],
                 }
               });
         });

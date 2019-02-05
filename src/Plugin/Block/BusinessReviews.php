@@ -81,7 +81,6 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
       '#api_id' => $api_id,
       '#attached' => array(
         'library' => array(
-          'business_reviews/vue',
           'business_reviews/reviews_list',
         ),
         'drupalSettings' => array(
