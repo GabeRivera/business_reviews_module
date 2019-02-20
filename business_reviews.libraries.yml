@@ -11,7 +11,7 @@ vue:
 reviews_list:
   version: 1.x
   js:
-    js/index.js: { scope: footer }
+    dist/businessPageReviews.js: { scope: footer }
   dependencies:
     - core/jquery
     - core/jquery.once
