@@ -1,4 +1,5 @@
 import {html, render} from 'lit-html';
+import './components/PaginationContainer.js';
 
 (function reviewsList($, Drupal) {
   Drupal.behaviors.reviewsList = {
@@ -24,6 +25,7 @@ import {html, render} from 'lit-html';
             `;
 
           const cardList = (list) => html`
+            <pagination-container></pagination-container>
             ${list.map(item => html`${cardItem(item)}`)}
           `;
 
