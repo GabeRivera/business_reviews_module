@@ -23,9 +23,12 @@ import './components/PaginationContainer.js';
                 </div>
             </div>
             `;
-
+          const woop = [{a: 1}];
           const cardList = (list) => html`
-            <pagination-container></pagination-container>
+            <pagination-container
+              currPage="0"
+              pages=${woop}
+            ></pagination-container>
             ${list.map(item => html`${cardItem(item)}`)}
           `;
 
