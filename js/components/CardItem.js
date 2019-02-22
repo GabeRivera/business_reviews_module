@@ -9,6 +9,13 @@ class CardItem extends LitElement {
 
     render(){
       return html`
+        <style>
+          :host .card {
+            padding: 24px;
+            border-radius: 2px;
+            background: #FFFFFF;
+          }
+        </style>
         <div class="col-md-6">
             <div class="card t10-card">
                 <div class="card-item card-title">
