@@ -8,7 +8,10 @@ import './components/PaginationContainer.js';
   Drupal.behaviors.reviewsList = {
     attach(context, settings) {
       $(context).find('#reviews-list').once('reviewsList').each(() => {
-        const reviews = [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews];
+        
+        const groupOfReviews = [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews];
+        const reviewFucked = groupOfReviews.map(r => r.title = 'woop woop');
+        const reviews = [groupOfReviews, groupOfReviews];
         const stringifiedReviews = JSON.stringify(reviews);
         const cardList = (list) => html `
             <pagination-container
