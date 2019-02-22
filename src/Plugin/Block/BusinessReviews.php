@@ -66,11 +66,13 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
     foreach ($business_reviews as $review) {
       $shapedReview = new \StdClass();
       $shapedReview->title = $review['title'];
-      $shapedReview->firstName = $review['user']['fname'];
-      $shapedReview->lastName = $review['user']['lname'];
       $shapedReview->rating = $review['rating']['overall'];
       $shapedReview->dateSubmitted = $review['date_submitted'];
       $shapedReview->content = $review['content'];
+      if (isset($review['user'])) {
+        $shapedReview->firstName = $review['user']['fname'] || 'NOTHING IN';
+        $shapedReview->lastName = $review['user']['lname'] || 'NOTHING IN';
+      }
       $reviews[] = $shapedReview;
     }
 

@@ -23,7 +23,7 @@ class BusinessReviewsClient {
    */
   public function __construct($http_client_factory) {
     $this->client = $http_client_factory->fromOptions([
-      'base_uri' => 'https://virtserver.swaggerhub.com/nick_renford/bk_reviews/1.0.0/',
+      'base_uri' => 'https://reviews.bluekeel.com/api/1.0.0/',
     ]);
     $this->apikey = \Drupal::service('key.repository')->getKey('test_api_key')->getKeyValue();
   }
@@ -36,7 +36,9 @@ class BusinessReviewsClient {
    * @return array
    */
   public function getProductReviews($id) {
-    $response = $this->client->get("reviews/approved/product/{$id}?APIKEY={$this->{'apikey'}}");
+    // This Endpoint of preapproved doesn't work yet
+    // $response = $this->client->get("reviews/approved/product/{$id}?apiKey={$this->{'apikey'}}");
+    $response = $this->client->get("reviews/product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
 
     return $data;
@@ -50,7 +52,7 @@ class BusinessReviewsClient {
    * @return array
    */
   public function getProductInfo($id) {
-    $response = $this->client->get("product/{$id}?APIKEY={$this->{'apikey'}}");
+    $response = $this->client->get("product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
 
     return $data;
