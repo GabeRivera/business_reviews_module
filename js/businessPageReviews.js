@@ -10,7 +10,6 @@ import './components/PaginationContainer.js';
       $(context).find('#reviews-list').once('reviewsList').each(() => {
         
         const groupOfReviews = [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews];
-        const reviewFucked = groupOfReviews.map(r => r.title = 'woop woop');
         const reviews = [groupOfReviews, groupOfReviews];
         const stringifiedReviews = JSON.stringify(reviews);
         const cardList = (list) => html `
