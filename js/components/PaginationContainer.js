@@ -32,6 +32,13 @@ class PaginationContainer extends LitElement {
 
     render(){
       return html`
+        <style>
+          :host .card {
+            padding: 24px;
+            border-radius: 2px;
+            background: #FFFFFF;
+          }
+        </style>
         <page-item contents=${JSON.stringify(this.pages[this.currPage])}></page-item>
         <button @click="${this.prevPage}">-</button>
         <button @click="${this.nextPage}">+</button>
