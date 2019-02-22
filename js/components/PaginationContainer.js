@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit-element';
+import './PageItem.js';
 
 class PaginationContainer extends LitElement {
     static get properties() {
@@ -7,12 +8,11 @@ class PaginationContainer extends LitElement {
         pages: { type: Array },
       };
     }
+    
 
     render(){
-      console.log(this);
       return html`
-        <pre>${this.pages}</pre>
-        <div>${this.currPage}</div>
+        <page-item contents=${JSON.stringify(this.pages)}></page-item>
       `;
     }
 }

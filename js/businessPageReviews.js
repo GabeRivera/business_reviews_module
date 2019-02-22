@@ -23,11 +23,11 @@ import './components/PaginationContainer.js';
                 </div>
             </div>
             `;
-          const woop = [{a: 1}];
+          const stringifiedReviews = JSON.stringify(reviews);
           const cardList = (list) => html`
             <pagination-container
               currPage="0"
-              pages=${woop}
+              pages=${stringifiedReviews}
             ></pagination-container>
             ${list.map(item => html`${cardItem(item)}`)}
           `;
