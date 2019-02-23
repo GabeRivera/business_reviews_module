@@ -2,6 +2,7 @@ import {
   html,
   render
 } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 (function reviewsList($, Drupal) {
   Drupal.behaviors.reviewsList = {
@@ -104,8 +105,15 @@ import {
             ${pagerItemList(pagerItemTemplates)}
           `;
 
-
-          const pagerItem = (number) => html`<li @click=${renderSelf} class="pager-item"><span>${number}<span></li>`;
+          
+          // function getPagerItemClasses(number) {
+          //   return { 
+          //     "pager-item": true,
+          //     "item-current": paginationControls.currPage === number - 1,
+          //   };
+          // }
+          
+          const pagerItem = (number) => html`<li @click=${renderSelf} class="pager-item"><span>${number}</span></li>`;
           const pagerItemList = (pagerItemTemplates) => html`
               <div class="pager">
                 <ul class="pager-items">
@@ -119,10 +127,8 @@ import {
             `;
 
           const pagerItemTemplates = [];
-          for (let i = 0; i < paginationControls.pages.length + 1; i++) {
-            if (i > 0) {
-              pagerItemTemplates.push(html`${pagerItem(JSON.stringify(i))}`);
-            }
+          for (let i = 0; i < paginationControls.pages.length; i++) {
+            pagerItemTemplates.push(html`${pagerItem(JSON.stringify(i + 1))}`);
           }
           renderPaginatedReviews();
 
