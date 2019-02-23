@@ -17,6 +17,16 @@
   },
   "homepage": "https://github.com/GabeRivera/business_reviews_module#readme",
   "dependencies": {
+    "lit-element": "^2.0.1",
     "lit-html": "^1.0.0"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0"
   }
 }

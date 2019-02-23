@@ -13,7 +13,7 @@ reviews_list:
   js:
     dist/businessPageReviews.js: { scope: footer }
   dependencies:
+    - core/drupal
     - core/jquery
     - core/jquery.once
     - core/drupalSettings
-    - business_reviews/vue
