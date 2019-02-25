@@ -8,6 +8,8 @@ class PaginationContainer extends LitElement {
         pages: { type: Array },
       };
     }
+    // In the "light dom"
+    createRenderRoot() { return this; }
     
     nextPage(e) {
       if (this.currPage < this.pages.length - 1) {
@@ -22,7 +24,6 @@ class PaginationContainer extends LitElement {
     prevPage(e) {
       if (this.currPage > 0) {
         this.currPage--;
-        console.log(this.pages[this.currPage]);
       }
       else {
         console.log('youre back at 0');
@@ -32,14 +33,7 @@ class PaginationContainer extends LitElement {
 
     render(){
       return html`
-        <style>
-          :host .card {
-            padding: 24px;
-            border-radius: 2px;
-            background: #FFFFFF;
-          }
-        </style>
-        <page-item contents=${JSON.stringify(this.pages[this.currPage])}></page-item>
+        <page-item .contents=${this.pages[this.currPage]}></page-item>
         <button @click="${this.prevPage}">-</button>
         <button @click="${this.nextPage}">+</button>
       `;

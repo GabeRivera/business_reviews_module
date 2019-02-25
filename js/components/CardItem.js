@@ -6,7 +6,7 @@ class CardItem extends LitElement {
         item: { type: Array }
       };
     }
-
+    createRenderRoot() { return this; }
     render(){
       return html`
         <div class="col-md-6">

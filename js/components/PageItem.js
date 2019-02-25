@@ -7,11 +7,13 @@ class PageItem extends LitElement {
         contents: { type: Array }
       };
     }
-
+    createRenderRoot() { return this; }
     render(){
+      console.log(this.contents);
       return html`
         ${this.contents.map(i => {
-          return html`<card-item item=${JSON.stringify(i)}></card-item>`})}
+          return html`<card-item .item=${i}></card-item>`})
+        };
       `;
     }
 }
