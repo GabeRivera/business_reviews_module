@@ -1,14 +1,21 @@
-import { LitElement, html } from 'lit-element';
+import {
+  LitElement,
+  html
+} from 'lit-element';
 
 class CardItem extends LitElement {
-    static get properties() {
-      return { 
-        item: { type: Array }
-      };
-    }
-    createRenderRoot() { return this; }
-    render(){
-      return html`
+  static get properties() {
+    return {
+      item: {
+        type: Array
+      }
+    };
+  }
+  createRenderRoot() {
+    return this;
+  }
+  render() {
+    return html `
         <div>
             <div class="card t10-card">
                 <div class="card-item card-title">
@@ -23,6 +30,6 @@ class CardItem extends LitElement {
             </div>
         </div>
       `;
-    }
+  }
 }
 customElements.define('card-item', CardItem);

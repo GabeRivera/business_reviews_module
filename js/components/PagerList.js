@@ -1,36 +1,73 @@
-import { LitElement, html } from 'lit-element';
+import {
+  LitElement,
+  html
+} from 'lit-element';
 import './PagerItem.js';
 
 class PagerList extends LitElement {
-    static get properties() {
-      return { 
-        number: { type: Number }
-      };
-    }
-    createRenderRoot() { return this; }
+  static get properties() {
+    return {
+      number: {
+        type: Number
+      },
+      currPage: {
+        type: Number
+      }
+    };
+  }
+  createRenderRoot() {
+    return this;
+  }
 
-    pageItemClicked(){
-        const event = new CustomEvent('page-item-clicked');
-        this.dispatchEvent(event);
-        console.log(event);
-    }
+  goToFirstPage(event) {
+    const event2 = new CustomEvent('goto-first', {
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event2);
 
-    render(){
-        const pagerItemTemplates = [];
-        for (let i = 0; i < this.number; i++) {
-         pagerItemTemplates.push(html`<pager-item @on-page-selected=${this.pageItemClicked} .number=${i + 1}></pager-item>`);
-        }
-      return html`
+  }
+
+  goToLastPage() {
+    const event = new CustomEvent('goto-last', {
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event);
+  }
+
+  goToNextPage() {
+    const event = new CustomEvent('goto-next', {
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event);
+  }
+
+  goToPreviousPage() {
+    const event = new CustomEvent('goto-previous', {
+      bubbles: true,
+      composed: true
+    });
+    this.dispatchEvent(event);
+  }
+
+  render() {
+    const pagerItemTemplates = [];
+    for (let i = 0; i < this.number; i++) {
+      pagerItemTemplates.push(html `<pager-item .currPage=${this.currPage} .number=${i + 1}></pager-item>`);
+    }
+    return html `
         <div class="pager">
             <ul class="pager-items">
-            <li class="pager-item item-first"><span>‹‹</span></li>
-            <li class="pager-item item-previous"><span>‹</span></li>
+            <li class="pager-item item-first" @click="${this.goToFirstPage}" ><span>‹‹</span></li>
+            <li class="pager-item item-previous" @click="${this.goToPreviousPage}" ><span>‹</span></li>
             ${pagerItemTemplates}
-            <li class="pager-item item-next"><span>›</span></li>
-            <li class="pager-item item-last"><span>››</span></li>
+            <li class="pager-item item-next" @click="${this.goToNextPage}" ><span>›</span></li>
+            <li class="pager-item item-last" @click="${this.goToLastPage}"><span>››</span></li>
             </ul>
         </div>
       `;
-    }
+  }
 }
 customElements.define('pager-list', PagerList);
