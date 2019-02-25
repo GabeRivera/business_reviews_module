@@ -9,7 +9,7 @@ class CardItem extends LitElement {
     createRenderRoot() { return this; }
     render(){
       return html`
-        <div class="col-md-6">
+        <div>
             <div class="card t10-card">
                 <div class="card-item card-title">
                     <h3>${this.item.title}</h3>

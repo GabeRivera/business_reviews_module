@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit-element';
 import './PageItem.js';
+import './PagerList.js';
 
 class PaginationContainer extends LitElement {
     static get properties() {
@@ -33,9 +34,10 @@ class PaginationContainer extends LitElement {
 
     render(){
       return html`
-        <page-item .contents=${this.pages[this.currPage]}></page-item>
+        <page-item class="row" .contents=${this.pages[this.currPage]}></page-item>
         <button @click="${this.prevPage}">-</button>
         <button @click="${this.nextPage}">+</button>
+        <pager-list .number=${this.pages.length}></pager-list>
       `;
     }
 }

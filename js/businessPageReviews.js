@@ -84,29 +84,6 @@ import './components/PaginationContainer.js';
           render(cardList(pagedReviews), document.getElementById('reviews-list'));
         }
 
-        // const cardItem = (item) => html`
-        //     <div class="col-md-6">
-        //         <div class="card t10-card">
-        //           <div class="card-item card-title">
-        //               <h3>${item.title}</h3>
-        //               <span class="subtitle">
-        //               by ${item.firstName} ${item.lastName} | ${item.dateSubmitted}
-        //               </span>
-        //           </div>
-        //           <div class="card-item card-text">
-        //               <p>${item.content}</p>
-        //           </div>
-        //         </div>
-        //     </div>
-        //   `;
-
-        //   // <reviews-list .allListItems=${reviewItemsArray} .currPage=${currPage}></reviews-list>
-        //   // <pager-component .currPage=${currPage} @on-page-click=${(clickedNumber) => {currPage = clickedNumber}}></pager-component>
-
-          // const cardList = (list) => html`
-          //   ${list.map(item => html`${cardItem(item)}`)}
-          //   ${pagerItemList(pagerItemTemplates)}
-          // `;
 
            const cardList = (list) => html`
             <pagination-container .currPage=${0} .pages=${list}></pagination-container>
