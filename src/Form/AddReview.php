@@ -137,7 +137,6 @@ class AddReview extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    dpm($form_state->getFormObject());
     if (strlen($form_state->getValue('phone_number')) < 3) {
       $form_state->setErrorByName('phone_number', $this->t('The phone number is too short. Please enter a full phone number.'));
     }
