@@ -36,7 +36,7 @@ class BusinessReviewsClient {
    * @return array
    */
   public function getProductReviews($id) {
-    $response = $this->client->get("reviews/approved/product/{$id}?apiKey={$this->{'apikey'}}");
+    $response = $this->client->get("reviews/product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
     
     return $data;
@@ -67,7 +67,8 @@ class BusinessReviewsClient {
   public function submitProductReview($id, $payload) {
     $request = $this->client->post("reviews/{$id}?apiKey={$this->{'apikey'}}");
     $response = Json::decode($response->getBody());
-    return $data;
+    dpm($response);
+    return $response;
   }
 
 

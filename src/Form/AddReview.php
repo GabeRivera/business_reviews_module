@@ -208,9 +208,8 @@ class AddReview extends FormBase {
       ),
       );
 
-    $shit = $this;
+    $this->businessReviewsClient->submitProductReview($api_id, $payload);
 
-    dpm($shit);
   }
 
 }
