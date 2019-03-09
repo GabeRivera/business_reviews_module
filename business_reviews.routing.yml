@@ -5,3 +5,11 @@ business_reviews.settings:
     _title: 'business_reviews configuration'
   requirements:
     _permission: 'administer site configuration'
+
+add_review.form:
+ path: '/business/add-review'
+ defaults:
+   _title: 'Add Business Review'
+   _form: '\Drupal\business_reviews\Form\AddReview'
+ requirements:
+   _permission: 'access content'

@@ -8,22 +8,17 @@ import './components/PaginationContainer.js';
   Drupal.behaviors.reviewsList = {
     attach(context, settings) {
       $(context).find('#reviews-list').once('reviewsList').each(() => {
+
         const groupOfReviews = [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews];
 
         const twisted = groupOfReviews.map(x => {
-          return Object.assign({}, x, {
-            title: 'test1'
-          });
+          return Object.assign({}, x);
         });
         const twisted2 = groupOfReviews.map(x => {
-          return Object.assign({}, x, {
-            title: 'testaroooo'
-          });
+          return Object.assign({}, x);
         });
         const twisted3 = groupOfReviews.map(x => {
-          return Object.assign({}, x, {
-            title: 'woopwoop'
-          });
+          return Object.assign({}, x);
         });
 
         const pagedReviews = [groupOfReviews, twisted, twisted2, twisted3];

@@ -15,6 +15,7 @@ class CardItem extends LitElement {
     return this;
   }
   render() {
+    console.log(this.item);
     return html `
         <div>
             <div class="card t10-card">
