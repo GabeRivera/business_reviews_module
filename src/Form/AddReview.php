@@ -20,10 +20,6 @@ class AddReview extends FormBase {
 
   /**
    * BusinessReviews constructor.
-   *
-   * @param array $configuration
-   * @param $plugin_id
-   * @param $plugin_definition
    * @param $business_reviews_client \Drupal\business_reviews\BusinessReviewsClient
    */
   public function __construct(BusinessReviewsClient $business_reviews_client) {
