@@ -4,11 +4,40 @@ namespace Drupal\business_reviews\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\business_reviews\BusinessReviewsClient;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 
 /**
  * Implements an example form.
  */
 class AddReview extends FormBase {
+
+  /**
+   * @var \Drupal\business_reviews\BusinessReviewsClient
+   */
+  protected $businessReviewsClient;
+
+  /**
+   * BusinessReviews constructor.
+   *
+   * @param array $configuration
+   * @param $plugin_id
+   * @param $plugin_definition
+   * @param $business_reviews_client \Drupal\business_reviews\BusinessReviewsClient
+   */
+  public function __construct(BusinessReviewsClient $business_reviews_client) {
+    $this->businessReviewsClient = $business_reviews_client;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('business_reviews_client')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -103,6 +132,19 @@ class AddReview extends FormBase {
             '56' => $this->t('Wyoming'),
         ],
     );
+
+    $form['rating'] = array(
+      '#type' => 'select',
+      '#title' => t('rating'),
+      '#required' => TRUE,
+      '#options' => [
+          '1' => $this->t('1'),
+          '2' => $this->t('2'),
+          '3' => $this->t('3'),
+          '4' => $this->t('4'),
+          '5' => $this->t('5'),
+      ],
+    );
     
     $form['zip_code'] = array(
         '#type' => 'textfield',
@@ -137,16 +179,42 @@ class AddReview extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    if (strlen($form_state->getValue('phone_number')) < 3) {
-      $form_state->setErrorByName('phone_number', $this->t('The phone number is too short. Please enter a full phone number.'));
-    }
+    // if (strlen($form_state->getValue('phone_number')) < 3) {
+    //   $form_state->setErrorByName('phone_number', $this->t('The phone number is too short. Please enter a full phone number.'));
+    // }
   }
 
   /**
    * {@inheritdoc}
+   * 
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    drupal_set_message($this->t('Your phone number is @number', ['@number' => $form_state->getValue('phone_number')]));
+
+    $node = \Drupal::routeMatch()->getParameter('node');
+    $api_id = $node->get('field_api_id')->getValue()[0]["value"];
+
+    $first_name = $form_state->getValue('first_name');
+    $last_name = $form_state->getValue('last_name');
+    $email = $form_state->getValue('email');
+    $title = $form_state->getValue('title');
+    $content = $form_state->getValue('content');
+    $rating = $form_state->getValue('rating');
+
+    $payload = (object) array(
+      'email' => $email,
+      'product_id' => $api_id,
+      'title' => $title,
+      'content' => $content,
+      'rating' => array(
+          'pros' => [],
+          'cons' => [],
+          'overall' => $rating,
+      ),
+      );
+
+    $shit = $this;
+
+    dpm($shit);
   }
 
 }

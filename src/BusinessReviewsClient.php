@@ -23,7 +23,7 @@ class BusinessReviewsClient {
    */
   public function __construct($http_client_factory) {
     $this->client = $http_client_factory->fromOptions([
-      'base_uri' => 'https://virtserver.swaggerhub.com/nick_renford/bk_reviews/1.0.0/',
+      'base_uri' => 'https://reviews.bluekeel.com/api/1.0.0/',
     ]);
     $this->apikey = \Drupal::service('key.repository')->getKey('test_api_key')->getKeyValue();
   }
@@ -36,24 +36,39 @@ class BusinessReviewsClient {
    * @return array
    */
   public function getProductReviews($id) {
-    $response = $this->client->get("reviews/approved/product/{$id}?APIKEY={$this->{'apikey'}}");
+    $response = $this->client->get("reviews/approved/product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
-
+    
     return $data;
   }
 
     /**
    * Get some reviews for product
    *
-   * @param int $amount
+   * @param int $id
    *
    * @return array
    */
   public function getProductInfo($id) {
-    $response = $this->client->get("product/{$id}?APIKEY={$this->{'apikey'}}");
+    $response = $this->client->get("product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
 
     return $data;
   }
+
+
+  /**
+   * Submit Review for Producct
+   *
+   * @param int $id
+   *
+   * @return array
+   */
+  public function submitProductReview($id, $payload) {
+    $request = $this->client->post("reviews/{$id}?apiKey={$this->{'apikey'}}");
+    $response = Json::decode($response->getBody());
+    return $data;
+  }
+
 
 }
