@@ -38,7 +38,6 @@ class BusinessReviewsClient {
   public function getProductReviews($id) {
     $response = $this->client->get("reviews/product/{$id}?apiKey={$this->{'apikey'}}");
     $data = Json::decode($response->getBody());
-    
     return $data;
   }
 

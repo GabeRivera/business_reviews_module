@@ -167,6 +167,9 @@ class AddReview extends FormBase {
       '#button_type' => 'primary',
     ];
 
+    
+    $form['#theme'] = 'add_review';
+
     return $form;
 
   }

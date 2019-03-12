@@ -9,6 +9,14 @@ function business_reviews_theme($existing, $type, $theme, $path) {
         ),
         'template' => 'block--reviews-list',
       ),
+      'add_review' => array(
+        'render element' => 'form'
+       )
     );
+    // $variables = array(
+    //   'add_review' => array(
+    //     'render element' => 'form'
+    //   )
+    // );
     return $variables;
   }

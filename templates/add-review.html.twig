@@ -1,0 +1,55 @@
+{{ form.form_build_id }}
+{{ form.form_token }}
+{{ form.form_id }}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="c-form-title">Write a <span>Review</span></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      {{ form.first_name }}
+    </div>
+    <div class="col-md-6">
+      {{ form.last_name }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{ form.email }}
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-md-6">
+      {{ form.state }}
+    </div>
+    <div class="col-md-6">
+      {{ form.zip_code }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{ form.rating }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      {{ form.title }}
+    </div>
+     <div class="col-md-12">
+      {{ form.content }}
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-md-12">
+      {{ form.actions.submit }}
+    </div>
+     
+  </div>
+</div>
