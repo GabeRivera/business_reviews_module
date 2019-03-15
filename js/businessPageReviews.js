@@ -3,33 +3,35 @@ import {
   render
 } from 'lit-html';
 import './components/PaginationContainer.js';
+import { groupByAmount } from './util/groupByAmount';
+import { generateFlattenedFakes } from './util/generateFlattenedFakes.js';
 
 (function reviewsList($, Drupal) {
   Drupal.behaviors.reviewsList = {
     attach(context, settings) {
-      $(context).find('#reviews-list').once('reviewsList').each(() => {
-
-        const groupOfReviews = [...settings.reviews, ...settings.reviews, ...settings.reviews, ...settings.reviews];
-
-        const twisted = groupOfReviews.map(x => {
-          return Object.assign({}, x);
-        });
-        const twisted2 = groupOfReviews.map(x => {
-          return Object.assign({}, x);
-        });
-        const twisted3 = groupOfReviews.map(x => {
-          return Object.assign({}, x);
-        });
-
-        const pagedReviews = [groupOfReviews, twisted, twisted2, twisted3];
-
-
-
+      $(context).find('#reviews-list').once('reviewsList').each(() => {      
         const cardList = (list) => html `<pagination-container .currPage=${0} .pages=${list}></pagination-container>`;
-        render(cardList(pagedReviews), document.getElementById('reviews-list'));
 
+        const noresults = () => html `
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-align-center">No comments have been submitted</h3>
+                <h5 class="text-align-center">Click above to submit a review!</h5>
+            </div>
+        </div>
+        `;
 
+        if (settings.reviews.length < 1) {
+          render(noresults(), document.getElementById('reviews-list'));
+        }
+        else {
+          const fakedReviews = generateFlattenedFakes(settings.reviews);
+          const pagedReviews = groupByAmount(fakedReviews, 8);
+
+          render(cardList(pagedReviews), document.getElementById('reviews-list'));
+        }
       });
     },
   };
 }(jQuery, Drupal));
+
