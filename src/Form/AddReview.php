@@ -188,7 +188,7 @@ class AddReview extends FormBase {
    * 
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-
+    
     $node = \Drupal::routeMatch()->getParameter('node');
     $api_id = $node->get('field_api_id')->getValue()[0]["value"];
 
@@ -210,8 +210,10 @@ class AddReview extends FormBase {
           'overall' => $rating,
       ),
       );
+      
 
-    $this->businessReviewsClient->submitProductReview($api_id, $payload);
+
+    $this->businessReviewsClient->submitProductReview($api_id, json_encode($payload));
 
   }
 
