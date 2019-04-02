@@ -6,7 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\business_reviews\BusinessReviewsClient;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-
+use Drupal\Component\Serialization\Json;
 
 /**
  * Implements an example form.
@@ -209,11 +209,9 @@ class AddReview extends FormBase {
           'cons' => [],
           'overall' => $rating,
       ),
-      );
-      
-
-
-    $this->businessReviewsClient->submitProductReview($api_id, json_encode($payload));
+    );
+    
+   $this->businessReviewsClient->submitProductReview($api_id, $payload);
 
   }
 

@@ -65,10 +65,11 @@ class BusinessReviewsClient {
 
   public function submitProductReview($id, $payload) {
     $request = $this->client->post("reviews/add?apiKey={$this->{'apikey'}}", [
-      'json' => $payload
+      'json' => $payload,
+      'debug' => true
     ]);
-    debug($payload, NULL, TRUE);
-    $response = Json::decode($response->getBody());
+    debug($request, NULL, TRUE);
+    $response = Json::decode($request->getBody());
     return $response;
   }
 
