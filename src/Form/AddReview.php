@@ -58,7 +58,7 @@ class AddReview extends FormBase {
         '#title' => t('last name'),
         '#required' => TRUE,
       );
-    
+
     $form['email'] = array(
         '#type' => 'email',
         '#title' => t('email address'),
@@ -141,7 +141,7 @@ class AddReview extends FormBase {
           '5' => $this->t('5'),
       ],
     );
-    
+
     $form['zip_code'] = array(
         '#type' => 'textfield',
         '#title' => t('zip code'),
@@ -167,7 +167,7 @@ class AddReview extends FormBase {
       '#button_type' => 'primary',
     ];
 
-    
+
     $form['#theme'] = 'add_review';
 
     return $form;
@@ -185,10 +185,10 @@ class AddReview extends FormBase {
 
   /**
    * {@inheritdoc}
-   * 
+   *
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    
+
     $node = \Drupal::routeMatch()->getParameter('node');
     $api_id = $node->get('field_api_id')->getValue()[0]["value"];
 
@@ -210,7 +210,7 @@ class AddReview extends FormBase {
           'overall' => $rating,
       ),
     );
-    
+
    $this->businessReviewsClient->submitProductReview($api_id, $payload);
 
   }

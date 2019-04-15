@@ -51,8 +51,8 @@ class PaginationContainer extends LitElement {
   render() {
     return html `
         <page-item class="row" .contents=${this.pages[this.currPage]}></page-item>
-        <pager-list 
-          @page-selected="${this.pageItemClicked}" 
+        <pager-list
+          @page-selected="${this.pageItemClicked}"
           @goto-first="${this.firstPage}"
           @goto-previous="${this.prevPage}"
           @goto-next="${this.nextPage}"

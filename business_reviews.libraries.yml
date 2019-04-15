@@ -1,13 +1,7 @@
-vue:
-  remote: https://github.com/vuejs/vue
-  version: 2.6.2
-  license:
-    name: MIT
-    url: https://github.com/vuejs/vue/blob/dev/LICENSE
-    gpl-compatible: true
+form_stars:
   js:
-    //cdnjs.cloudflare.com/ajax/libs/vue/2.6.2/vue.js: {type: external, minified: true}
-    
+    dist/stars.js: { scope: footer }
+
 reviews_list:
   version: 1.x
   js:

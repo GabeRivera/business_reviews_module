@@ -19,7 +19,6 @@ import { groupByAmount } from './util/groupByAmount';
             </div>
         </div>
         `;
-        console.log(settings.reviews)
         if (settings.reviews.length < 1) {
           render(noresults(), document.getElementById('reviews-list'));
         }

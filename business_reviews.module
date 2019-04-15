@@ -1,4 +1,4 @@
-<?php 
+<?php
 function business_reviews_theme($existing, $type, $theme, $path) {
     $variables = array(
       'reviews_list' => array(
@@ -13,10 +13,10 @@ function business_reviews_theme($existing, $type, $theme, $path) {
         'render element' => 'form'
        )
     );
-    // $variables = array(
-    //   'add_review' => array(
-    //     'render element' => 'form'
-    //   )
-    // );
     return $variables;
   }
+
+function business_reviews_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+  $form['#attached']['library'][] = 'business_reviews/form_stars';
+  return $form;
+}
