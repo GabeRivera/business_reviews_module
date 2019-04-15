@@ -4,12 +4,11 @@ import {
 } from 'lit-html';
 import './components/PaginationContainer.js';
 import { groupByAmount } from './util/groupByAmount';
-import { generateFlattenedFakes } from './util/generateFlattenedFakes.js';
 
 (function reviewsList($, Drupal) {
   Drupal.behaviors.reviewsList = {
     attach(context, settings) {
-      $(context).find('#reviews-list').once('reviewsList').each(() => {      
+      $(context).find('#reviews-list').once('reviewsList').each(() => {
         const cardList = (list) => html `<pagination-container .currPage=${0} .pages=${list}></pagination-container>`;
 
         const noresults = () => html `
@@ -20,14 +19,12 @@ import { generateFlattenedFakes } from './util/generateFlattenedFakes.js';
             </div>
         </div>
         `;
-
+        console.log(settings.reviews)
         if (settings.reviews.length < 1) {
           render(noresults(), document.getElementById('reviews-list'));
         }
         else {
-          const fakedReviews = generateFlattenedFakes(settings.reviews);
-          const pagedReviews = groupByAmount(fakedReviews, 8);
-
+          const pagedReviews = groupByAmount(settings.reviews, 8);
           render(cardList(pagedReviews), document.getElementById('reviews-list'));
         }
       });

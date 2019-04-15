@@ -15,14 +15,13 @@ class CardItem extends LitElement {
     return this;
   }
   render() {
-    console.log(this.item);
     return html `
         <div>
             <div class="card t10-card">
                 <div class="card-item card-title">
                     <h3>${this.item.title}</h3>
                     <span class="subtitle">
-                    by ${this.item.firstName} ${this.item.lastName} | ${this.item.dateSubmitted}
+                    ${this.item.dateSubmitted}
                     </span>
                 </div>
                 <div class="card-item card-text">

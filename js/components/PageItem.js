@@ -19,7 +19,7 @@ class PageItem extends LitElement {
     return html `
         ${this.contents.map(i => {
           return html`<card-item class="col-md-6" .item=${i}></card-item>`})
-        };
+        }
       `;
   }
 }

@@ -1,7 +1,7 @@
 function groupByAmount(targetArray, amount) {
     const arr = targetArray;
     const pages = [];
-    
+
     function grabAmountFromArray() {
       if (arr.length <= amount) {
         pages.push(arr);
@@ -12,7 +12,7 @@ function groupByAmount(targetArray, amount) {
         grabAmountFromArray(arr);
       }
     }
-    
+
     grabAmountFromArray(arr);
     return pages;
 }

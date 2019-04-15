@@ -4,10 +4,11 @@ namespace Drupal\business_reviews\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * 
+ *
  *
  * @Block(
  *   id = "business_reviews_block",
@@ -63,14 +64,14 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
     $business_reviews = $this->businessReviewsClient->getProductReviews($api_id);
     $reviews = [];
 
-    
     foreach ($business_reviews as $review) {
+      $dateSubmittedOriginal = new DrupalDateTime($review['date_submitted']);
+      $dateFormatted = $dateSubmittedOriginal->format('M/d/Y');
+
       $shapedReview = new \StdClass();
       $shapedReview->title = $review['title'];
-      // $shapedReview->firstName = $review['user']['fname'];
-      // $shapedReview->lastName = $review['user']['lname'];
       $shapedReview->rating = $review['rating']['overall'];
-      $shapedReview->dateSubmitted = $review['date_submitted'];
+      $shapedReview->dateSubmitted = $dateFormatted;
       $shapedReview->content = $review['content'];
       $reviews[] = $shapedReview;
     }
