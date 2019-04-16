@@ -1,7 +1,3 @@
-form_stars:
-  js:
-    dist/stars.js: { scope: footer }
-
 reviews_list:
   version: 1.x
   js:
