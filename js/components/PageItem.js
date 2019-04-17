@@ -18,7 +18,7 @@ class PageItem extends LitElement {
   render() {
     return html `
         ${this.contents.map(i => {
-          return html`<card-item class="col-md-6" .item=${i}></card-item>`})
+          return html`<card-item class="col-xs-12 col-sm-6" .item=${i}></card-item>`})
         }
       `;
   }
