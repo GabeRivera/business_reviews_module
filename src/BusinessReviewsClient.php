@@ -68,7 +68,6 @@ class BusinessReviewsClient {
       'json' => $payload,
       'debug' => true
     ]);
-    debug($request, NULL, TRUE);
     $response = Json::decode($request->getBody());
     return $response;
   }
