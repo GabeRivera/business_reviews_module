@@ -73,6 +73,7 @@ class BusinessReviews extends BlockBase implements ContainerFactoryPluginInterfa
       $shapedReview->rating = $review['rating']['overall'];
       $shapedReview->dateSubmitted = $dateFormatted;
       $shapedReview->content = $review['content'];
+      $shapedReview->user = $review['user'];
       $reviews[] = $shapedReview;
     }
     return [

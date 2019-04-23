@@ -21,7 +21,7 @@ class CardItem extends LitElement {
                 <div class="card-item card-title">
                     <h3>${this.item.title}</h3>
                     <span class="subtitle">
-                    ${this.item.dateSubmitted}
+                    by ${this.item.user.email} | ${this.item.dateSubmitted}
                     </span>
                 </div>
                 <div class="card-item card-text">
